@@ -1,15 +1,12 @@
 package com.e_onlineshoppingwebsite.store.Service;
 
-import com.e_onlineshoppingwebsite.store.Dto.LoginRequest;
-import com.e_onlineshoppingwebsite.store.Dto.LoginResponse;
-import com.e_onlineshoppingwebsite.store.Dto.MemberResponse;
-import com.e_onlineshoppingwebsite.store.Dto.RegisterRequest;
+import com.e_onlineshoppingwebsite.store.Model.Member;
 
 public interface AuthService {
 
-    MemberResponse register(RegisterRequest request);
+    Member register(Member member);
 
-    LoginResponse login(LoginRequest request);
+    Member login(String email, String password);
 
     void changePassword(
             Long userId,
@@ -18,5 +15,7 @@ public interface AuthService {
 
     void forgotPassword(String email);
 
-    void resetPassword(String token, String newPassword);
+    void resetPassword(
+            String token,
+            String newPassword);
 }
