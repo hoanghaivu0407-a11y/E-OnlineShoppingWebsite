@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Trang chủ - E-OnlineShoppingWebsite</title>
+</head>
+
+<body>
+
+    <h1>Siêu thị trực tuyến</h1>
+
+    <nav>
+        <a th:href="@{/home}">Trang chủ</a>
+        <a th:href="@{/login}">Đăng nhập</a>
+        <a th:href="@{/register}">Đăng ký</a>
+        <a th:href="@{/cart}">Giỏ hàng</a>
+    </nav>
+
+    <hr>
+
+    <h2>Danh mục sản phẩm</h2>
+
+    <div th:each="category : ${categories}">
+        <p th:text="${category.categoryName}"></p>
+    </div>
+
+    <hr>
+
+    <h2>Sản phẩm mới nhất</h2>
+
+    <div th:each="product : ${newProducts}">
+
+        <h3 th:text="${product.productName}"></h3>
+
+        <p>
+            Giá:
+            <span th:text="${product.price}"></span> VNĐ
+        </p>
+
+        <a th:href="@{/detail(productId=${product.productId})}">
+            Xem chi tiết
+        </a>
+
+        <form th:action="@{/api/cart/add}" method="post">
+
+            <input type="hidden"
+                   name="productId"
+                   th:value="${product.productId}">
+
+            <input type="hidden"
+                   name="quantity"
+                   value="1">
+
+            <button type="submit">Thêm vào giỏ</button>
+        </form>
+
+    </div>
+
+</body>
+</html>

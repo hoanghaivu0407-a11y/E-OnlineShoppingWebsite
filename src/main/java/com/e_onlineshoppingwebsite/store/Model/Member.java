@@ -3,8 +3,6 @@ package com.e_onlineshoppingwebsite.store.Model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import javax.management.relation.Role;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
